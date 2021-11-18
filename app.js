@@ -7,6 +7,8 @@ const main = require("./views/main");
 const userList = require("./views/userList");
 const userPages = require("./views/userPages");
 
+const { db, Page, User } = require('./models');
+
 const path = require('path');
 
 app.use(express.static(path.join(__dirname + '/public')));
@@ -25,8 +27,19 @@ app.get('/', (req, res) => {
   res.send(console.log('hello world'));
 })
 
-const port = 8080;
+db.authenticate()
+  .then(() => {
+    console.log('connected to the database');
+  })
 
-app.listen(port, () => {
-  console.log(`Running on port ${port}`);
-})
+  const init = async () => {
+    await db.sync({force: true});
+
+    const PORT = 8080;
+
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}!`);
+    });
+  }
+  
+  init();
