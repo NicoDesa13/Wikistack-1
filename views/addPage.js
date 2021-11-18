@@ -1,14 +1,18 @@
 const html = require("html-template-tag");
 const layout = require("./layout");
 
-module.exports = () => layout(html`
+module.exports = () => layout(html `
   <h3>Add a Page</h3>
   <hr>
   <form method="POST" action="/wiki/">
     
     <div>PLACEHOLDER FOR AUTHOR NAME FIELD</div>
     
-    <div>PLACEHOLDER FOR AUTHOR EMAIL FIELD</div>
+    <div class="form-group">
+      <label for="email" class="col-sm-2 control-label">Author Email</label>
+      <div class="col-sm-10">
+        <input id="email" name="email" type="text" class="form-control"/>
+      </div></div>
     
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">Page Title</label>
