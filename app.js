@@ -1,11 +1,25 @@
 const express = require('express');
-//const morgan = require('morgan');
+const morgan = require('morgan');
 const app = express();
+const addPage = require("./views/addPage");
+const editPage = require("./views/editPage");
+const main = require("./views/main");
+const userList = require("./views/userList");
+const userPages = require("./views/userPages");
 
-app.use(express.static(__dirname + '/public'));
-//app.use(morgan('dev'));
+const path = require('path');
 
-app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname + '/public/stylesheets')));
+app.use(morgan('dev'));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.get("/", (req, res) => {
+
+  res.send(addPage(""));
+})
 
 app.get('/', (req, res) => {
   res.send(console.log('hello world'));
@@ -14,5 +28,5 @@ app.get('/', (req, res) => {
 const port = 8080;
 
 app.listen(port, () => {
-  console.log();
+  console.log(`Running on port ${port}`);
 })
