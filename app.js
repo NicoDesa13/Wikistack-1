@@ -41,9 +41,6 @@ app.get("/", (req, res) => {
 
 
 
-app.get('/', (req, res) => {
-  res.send(console.log('hello world'));
-})
 
 db.authenticate()
   .then(() => {
