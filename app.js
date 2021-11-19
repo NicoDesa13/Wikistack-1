@@ -32,7 +32,7 @@ const wikiRouter = require("./routes/wiki");
 
 app.use('/wiki', wikiRouter);
 
-//app.use('/users', usersRoute);
+app.use('/users', usersRouter);
 
 //try {
 //  app.get("/", (req, res) => {
