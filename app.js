@@ -47,9 +47,6 @@ app.use('/users', usersRouter);
 
 
 
-
-
-
 db.authenticate()
   .then(() => {
     console.log('Connected to the Database -- WOOHOOO');
